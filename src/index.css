@@ -64,6 +64,20 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Evalu Motion Tokens */
+    --ev-ease-emphasized: cubic-bezier(0.16, 1, 0.3, 1);
+    --ev-ease-standard: cubic-bezier(0.2, 0.8, 0.2, 1);
+    --ev-ease-springy: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    --ev-dur-fast: 180ms;
+    --ev-dur-base: 280ms;
+    --ev-dur-slow: 420ms;
+    --ev-dur-xl: 800ms;
+
+    --ev-distance-sm: 8px;
+    --ev-distance-md: 18px;
+    --ev-distance-lg: 32px;
   }
 
   .dark {
@@ -103,6 +117,20 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Evalu Motion Tokens (same in dark mode) */
+    --ev-ease-emphasized: cubic-bezier(0.16, 1, 0.3, 1);
+    --ev-ease-standard: cubic-bezier(0.2, 0.8, 0.2, 1);
+    --ev-ease-springy: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    --ev-dur-fast: 180ms;
+    --ev-dur-base: 280ms;
+    --ev-dur-slow: 420ms;
+    --ev-dur-xl: 800ms;
+
+    --ev-distance-sm: 8px;
+    --ev-distance-md: 18px;
+    --ev-distance-lg: 32px;
   }
 }
 
@@ -117,6 +145,26 @@
 
   body {
     @apply bg-background text-foreground font-body antialiased;
+  }
+
+  /* Reduced motion support for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 1ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 1ms !important;
+      scroll-behavior: auto !important;
+    }
+
+    .floating-shapes {
+      display: none;
+    }
   }
 }
 
@@ -148,7 +196,7 @@
 
   .futuristic-card:hover {
     box-shadow: 0 0 60px hsl(var(--accent) / 0.2), inset 0 1px 0 hsl(var(--accent) / 0.3), 0 20px 40px -10px rgba(0, 0, 0, 0.3);
-    transform: translateY(-8px) scale(1.02);
+    /* transform removed - handled by ev-hover-premium */
   }
 
   .futuristic-button {
@@ -264,13 +312,82 @@
   .animation-delay-500 {
     animation-delay: 500ms;
   }
+
+  /* Evalu hover utilities */
+  .ev-hover-premium {
+    transition: transform var(--ev-dur-base) var(--ev-ease-emphasized),
+                box-shadow var(--ev-dur-base) var(--ev-ease-emphasized);
+  }
+
+  .ev-hover-premium:hover {
+    transform: translateY(-8px) scale(1.02);
+  }
+
+  /* AI/Data focused hero overlay */
+  .ev-hero-overlay {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ev-hero-overlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      to bottom,
+      hsl(var(--accent) / 0.05),
+      hsl(var(--accent) / 0.05) 1px,
+      transparent 1px,
+      transparent 6px
+    );
+    opacity: 0.25;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+  }
+
+  .ev-hero-overlay::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 20%, hsl(var(--accent) / 0.10), transparent 50%);
+    pointer-events: none;
+  }
+
+  /* Data ticker micro-interaction */
+  @keyframes ev-data-tick {
+    0% {
+      opacity: 0;
+      transform: translateY(var(--ev-distance-sm));
+      filter: blur(2px);
+    }
+    70% {
+      opacity: 1;
+      transform: translateY(calc(var(--ev-distance-sm) * -0.25));
+      filter: blur(0);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .ev-anim-data-tick {
+    animation: ev-data-tick var(--ev-dur-slow) var(--ev-ease-emphasized) forwards;
+  }
+
+  /* Scroll reveal base state */
+  .ev-reveal {
+    opacity: 0;
+    transform: translateY(var(--ev-distance-md));
+    will-change: transform, opacity;
+  }
 }
 
 /* Evalu Core Motion System - Foundation easing and timing */
 @keyframes ev-insight-reveal {
   0% {
     opacity: 0;
-    transform: translateY(30px) scale(0.95);
+    transform: translateY(var(--ev-distance-lg)) scale(0.95);
     filter: blur(2px);
   }
   100% {
@@ -283,7 +400,7 @@
 @keyframes ev-neural-ease {
   0% {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(var(--ev-distance-md));
   }
   60% {
     opacity: 0.8;
@@ -307,11 +424,11 @@
 @keyframes ev-quantum-lift {
   0% {
     opacity: 0;
-    transform: translateY(40px) scale(0.9);
+    transform: translateY(calc(var(--ev-distance-lg) * 1.25)) scale(0.9);
   }
   70% {
     opacity: 0.9;
-    transform: translateY(-5px) scale(1.02);
+    transform: translateY(calc(var(--ev-distance-md) * -0.28)) scale(1.02);
   }
   100% {
     opacity: 1;
@@ -440,12 +557,12 @@
 @keyframes ev-capability-expand {
   0% {
     opacity: 0;
-    transform: scale(0.8) translateY(30px);
+    transform: scale(0.8) translateY(var(--ev-distance-lg));
     box-shadow: 0 0 0 hsl(var(--accent) / 0);
   }
   50% {
     opacity: 0.9;
-    transform: scale(1.05) translateY(-5px);
+    transform: scale(1.05) translateY(calc(var(--ev-distance-md) * -0.28));
   }
   100% {
     opacity: 1;
@@ -522,35 +639,35 @@
 
 /* Evalu Custom Animation Classes */
 .animate-ev-insight-reveal {
-  animation: ev-insight-reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: ev-insight-reveal var(--ev-dur-xl) var(--ev-ease-emphasized) forwards;
 }
 
 .animate-ev-neural-ease {
-  animation: ev-neural-ease 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation: ev-neural-ease var(--ev-dur-base) var(--ev-ease-standard) forwards;
 }
 
 .animate-ev-quantum-lift {
-  animation: ev-quantum-lift 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation: ev-quantum-lift var(--ev-dur-xl) var(--ev-ease-springy) forwards;
 }
 
 .animate-ev-capability-expand {
-  animation: ev-capability-expand 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation: ev-capability-expand var(--ev-dur-slow) var(--ev-ease-springy) forwards;
 }
 
 .animate-ev-value-frame {
-  animation: ev-value-frame 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation: ev-value-frame var(--ev-dur-xl) var(--ev-ease-standard) forwards;
 }
 
 .animate-ev-cta-attractor {
-  animation: ev-cta-attractor 2s ease-in-out infinite;
+  animation: ev-cta-attractor 2s var(--ev-ease-standard) infinite;
 }
 
 .animate-ev-chrono-path {
-  animation: ev-chrono-path 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation: ev-chrono-path 2s var(--ev-ease-standard) forwards;
 }
 
 .animate-ev-milestone-ignite {
-  animation: ev-milestone-ignite 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+  animation: ev-milestone-ignite var(--ev-dur-base) var(--ev-ease-emphasized) forwards;
 }
 
 /* Legacy animations (keeping for compatibility) */

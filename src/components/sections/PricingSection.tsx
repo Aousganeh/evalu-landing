@@ -87,8 +87,8 @@ const PricingSection = () => {
               <CardHeader className="text-center pb-4 pt-8">
                 <CardTitle className="text-xl mb-2">{plan.name}</CardTitle>
                 <div className="mb-2">
-                  <span className="text-4xl font-bold text-foreground">{plan.price}</span>
-                  <span className="text-muted-foreground">{plan.period}</span>
+                  <span className="text-4xl font-bold text-foreground ev-anim-data-tick">{plan.price}</span>
+                  <span className="text-muted-foreground ev-anim-data-tick" style={{ animationDelay: '100ms' }}>{plan.period}</span>
                 </div>
                 <CardDescription className="text-sm">{plan.description}</CardDescription>
               </CardHeader>

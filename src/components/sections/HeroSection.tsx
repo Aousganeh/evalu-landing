@@ -24,7 +24,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/80 to-primary/70"></div>
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_hsl(222_47%_11%/0.6)_100%)]"></div>
 
-      <div className="section-container relative z-10 py-20 sm:py-32">
+      <div className="section-container relative z-10 py-20 sm:py-32 ev-hero-overlay">
         <div className="max-w-4xl mx-auto text-center">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-200 mb-8 animate-fade-in">
