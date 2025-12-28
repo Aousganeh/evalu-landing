@@ -1,4 +1,3 @@
-import logoImage from "@/assets/Picture1.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -8,12 +7,8 @@ const Footer = () => {
       <div className="section-container">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Logo */}
-          <a href="#" className="text-primary-foreground">
-            <img
-              src={logoImage}
-              alt="Evalu"
-              className="h-8 w-auto"
-            />
+          <a href="#" className="text-2xl font-bold text-primary-foreground">
+            evalu<span className="text-accent">.</span>
           </a>
 
           {/* Copyright */}
