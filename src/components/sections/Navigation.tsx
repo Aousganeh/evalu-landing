@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import logoImage from "@/assets/Picture1.png";
 
 const navLinks = [
   { label: "Problem", href: "#problem" },
@@ -35,14 +36,12 @@ const Navigation = () => {
       <nav className="section-container" aria-label="Main navigation">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <a
-            href="#"
-            className={`text-2xl font-bold transition-colors ${
-              isScrolled ? "text-foreground" : "text-primary-foreground"
-            }`}
-            aria-label="Evalu homepage"
-          >
-            evalu<span className="text-accent">.</span>
+          <a href="#" aria-label="Evalu homepage">
+            <img
+              src={logoImage}
+              alt="Evalu"
+              className="h-8 w-auto"
+            />
           </a>
 
           {/* Desktop navigation */}
