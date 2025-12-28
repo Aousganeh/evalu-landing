@@ -59,11 +59,11 @@ const ProductSection = () => {
           {productFeatures.map((feature, index) => (
             <Card
               key={feature.name}
-              className="text-center hover:shadow-lg transition-all duration-300 hover:scale-105"
+              className="futuristic-card text-center animate-hologram"
             >
               <CardContent className="pt-8 pb-8">
-                <div className="w-12 h-12 mx-auto mb-4 flex items-center justify-center bg-accent/10 rounded-lg">
-                  <feature.icon className="w-6 h-6 text-accent" />
+                <div className="w-14 h-14 mx-auto mb-4 flex items-center justify-center bg-gradient-to-br from-accent/20 to-accent/5 rounded-xl border border-accent/20 animate-float-slow">
+                  <feature.icon className="w-7 h-7 text-accent animate-glow" />
                 </div>
                 <CardTitle className="text-lg font-semibold text-foreground mb-3">
                   {feature.name}
