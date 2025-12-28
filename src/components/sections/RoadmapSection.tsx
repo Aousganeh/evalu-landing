@@ -48,8 +48,8 @@ const RoadmapSection = () => {
         </div>
 
         <div className="relative max-w-4xl mx-auto">
-          {/* Timeline line */}
-          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-primary-foreground/20 transform md:-translate-x-1/2" />
+          {/* Timeline line - Chrono Path */}
+          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-primary-foreground/20 transform md:-translate-x-1/2 animate-ev-chrono-path" />
 
           <div className="space-y-8">
             {milestones.map((milestone, index) => (
@@ -57,7 +57,7 @@ const RoadmapSection = () => {
                 key={milestone.quarter}
                 className={`relative flex items-start gap-8 ${
                   index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                } animate-fade-in-up`}
+                } animate-ev-milestone-ignite`}
                 style={{ animationDelay: `${index * 150}ms` }}
               >
                 {/* Timeline dot */}

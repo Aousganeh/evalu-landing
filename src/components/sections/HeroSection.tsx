@@ -33,22 +33,22 @@ const HeroSection = () => {
           </div>
 
           {/* Main heading */}
-          <h1 
+          <h1
             id="hero-title"
-            className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground leading-tight mb-6 animate-fade-in-up"
+            className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground leading-tight mb-6 animate-ev-insight-reveal"
           >
             AI-powered customer feedback analytics for{" "}
             <span className="gradient-text">modern businesses</span>
           </h1>
 
           {/* Subtitle */}
-          <p className="text-lg sm:text-xl text-primary-foreground/70 max-w-2xl mx-auto mb-10 animate-fade-in-up animation-delay-200">
+          <p className="text-lg sm:text-xl text-primary-foreground/70 max-w-2xl mx-auto mb-10 animate-ev-neural-ease animation-delay-300">
             Transform feedback into actionable insights with topic-level sentiment and real-time dashboards.
           </p>
 
           {/* Futuristic CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 animate-fade-in-up animation-delay-300">
-            <Button variant="hero" size="xl" className="futuristic-button animate-glow" asChild>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 animate-ev-quantum-lift animation-delay-500">
+            <Button variant="hero" size="xl" className="futuristic-button animate-ev-cta-attractor" asChild>
               <a href="#pricing" aria-label="Get early access to Evalu">
                 Get Early Access
                 <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />

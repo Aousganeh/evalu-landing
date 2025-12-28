@@ -71,10 +71,10 @@ const PricingSection = () => {
 
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {plans.map((plan, index) => (
-            <Card 
+            <Card
               key={plan.name}
               variant={plan.featured ? "pricing-featured" : "pricing"}
-              className="animate-fade-in-up"
+              className="animate-ev-value-frame"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {plan.featured && (

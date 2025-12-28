@@ -59,7 +59,7 @@ const ProductSection = () => {
           {productFeatures.map((feature, index) => (
             <Card
               key={feature.name}
-              className="futuristic-card text-center animate-hologram"
+              className="futuristic-card text-center animate-ev-capability-expand"
             >
               <CardContent className="pt-8 pb-8">
                 <div className="w-14 h-14 mx-auto mb-4 flex items-center justify-center bg-gradient-to-br from-accent/20 to-accent/5 rounded-xl border border-accent/20">
