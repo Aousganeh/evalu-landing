@@ -55,11 +55,11 @@ const ProductSection = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto ev-depth-focus">
           {productFeatures.map((feature, index) => (
             <Card
               key={feature.name}
-              className="futuristic-card ev-hover-premium text-center animate-ev-capability-expand"
+              className="futuristic-card ev-hover-premium text-center animate-ev-capability-expand ev-depth-item"
             >
               <CardContent className="pt-8 pb-8">
                 <div className="w-14 h-14 mx-auto mb-4 flex items-center justify-center bg-gradient-to-br from-accent/20 to-accent/5 rounded-xl border border-accent/20">

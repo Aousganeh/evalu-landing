@@ -50,7 +50,7 @@ const Navigation = () => {
               <a
                 key={link.label}
                 href={link.href}
-                className={`text-sm font-medium transition-colors hover:text-accent ${
+                className={`text-sm font-medium transition-colors hover:text-accent ev-nav-underline ${
                   isScrolled ? "text-muted-foreground" : "text-primary-foreground/80"
                 }`}
               >

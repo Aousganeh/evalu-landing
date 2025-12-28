@@ -381,6 +381,141 @@
     transform: translateY(var(--ev-distance-md));
     will-change: transform, opacity;
   }
+
+  /* 1) Border Trace (premium highlight) */
+  @keyframes ev-border-trace {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+  }
+  .ev-border-trace {
+    position: relative;
+  }
+  .ev-border-trace::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--accent) / 0.55),
+      transparent
+    );
+    background-size: 200% 100%;
+    animation: ev-border-trace 1.6s linear infinite;
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.7;
+  }
+
+  /* 2) Glass Sheen (hover sweep) */
+  @keyframes ev-glass-sheen {
+    0% { transform: translateX(-120%) skewX(-12deg); opacity: 0; }
+    20% { opacity: 0.35; }
+    100% { transform: translateX(120%) skewX(-12deg); opacity: 0; }
+  }
+  .ev-glass-sheen {
+    position: relative;
+    overflow: hidden;
+  }
+  .ev-glass-sheen::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--accent) / 0.10),
+      transparent
+    );
+    transform: translateX(-120%) skewX(-12deg);
+    opacity: 0;
+    pointer-events: none;
+  }
+  .ev-glass-sheen:hover::after {
+    animation: ev-glass-sheen 900ms var(--ev-ease-emphasized);
+  }
+
+  /* 3) Text Scan Reveal */
+  @keyframes ev-type-scan {
+    0% { opacity: 0; clip-path: inset(0 0 100% 0); transform: translateY(10px); }
+    100% { opacity: 1; clip-path: inset(0 0 0 0); transform: translateY(0); }
+  }
+  .ev-anim-type-scan {
+    animation: ev-type-scan var(--ev-dur-xl) var(--ev-ease-emphasized) forwards;
+  }
+
+  /* 4) Update Ping (real-time hint) */
+  @keyframes ev-ping-update {
+    0% { transform: scale(0.9); opacity: 0.0; }
+    30% { opacity: 0.6; }
+    100% { transform: scale(1.8); opacity: 0.0; }
+  }
+  .ev-ping {
+    position: relative;
+  }
+  .ev-ping::after {
+    content: "";
+    position: absolute;
+    top: 0.15rem;
+    right: 0.15rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: hsl(var(--accent) / 0.8);
+    box-shadow: 0 0 18px hsl(var(--accent) / 0.35);
+  }
+  .ev-ping::before {
+    content: "";
+    position: absolute;
+    top: 0.15rem;
+    right: 0.15rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    border: 1px solid hsl(var(--accent) / 0.7);
+    animation: ev-ping-update 1.8s ease-out infinite;
+  }
+
+  /* 5) Depth Focus (grid hover) */
+  .ev-depth-focus:hover .ev-depth-item {
+    opacity: 0.65;
+    filter: blur(0.4px);
+    transform: translateY(0);
+  }
+  .ev-depth-focus:hover .ev-depth-item:hover {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(-6px);
+  }
+
+  /* 6) Nav Underline Flow */
+  @keyframes ev-underline-flow {
+    0% { transform: scaleX(0); transform-origin: left; }
+    100% { transform: scaleX(1); transform-origin: left; }
+  }
+  .ev-nav-underline {
+    position: relative;
+  }
+  .ev-nav-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    height: 2px;
+    width: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, hsl(var(--accent)), transparent);
+    transform: scaleX(0);
+  }
+  .ev-nav-underline:hover::after {
+    animation: ev-underline-flow var(--ev-dur-base) var(--ev-ease-emphasized) forwards;
+  }
 }
 
 /* Evalu Core Motion System - Foundation easing and timing */

@@ -74,7 +74,7 @@ const PricingSection = () => {
             <Card
               key={plan.name}
               variant={plan.featured ? "pricing-featured" : "pricing"}
-              className="animate-ev-value-frame"
+              className={`animate-ev-value-frame ${plan.featured ? 'futuristic-card ev-hover-premium ev-border-trace ev-glass-sheen' : ''}`}
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {plan.featured && (
