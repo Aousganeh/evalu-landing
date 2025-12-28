@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import logoImage from "@/assets/Picture1.png";
 
 const navLinks = [
   { label: "Problem", href: "#problem" },
@@ -37,7 +38,7 @@ const Navigation = () => {
           {/* Logo */}
           <a href="#" aria-label="Evalu homepage">
             <img
-              src="/src/assets/Picture1.png"
+              src={logoImage}
               alt="Evalu"
               className="h-8 w-auto"
             />

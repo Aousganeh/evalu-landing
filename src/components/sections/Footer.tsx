@@ -1,3 +1,5 @@
+import logoImage from "@/assets/Picture1.png";
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -8,7 +10,7 @@ const Footer = () => {
           {/* Logo */}
           <a href="#" className="text-primary-foreground">
             <img
-              src="/src/assets/Picture1.png"
+              src={logoImage}
               alt="Evalu"
               className="h-8 w-auto"
             />
