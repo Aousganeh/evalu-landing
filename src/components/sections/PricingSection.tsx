@@ -77,14 +77,7 @@ const PricingSection = () => {
               className={`relative animate-ev-value-frame ${plan.featured ? 'futuristic-card ev-hover-premium ev-border-trace ev-glass-sheen' : ''}`}
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              {plan.featured && (
-                <div className="absolute -top-6 left-1/2 -translate-x-1/2 z-10">
-                  <span className="bg-accent text-accent-foreground px-4 py-1 rounded-full text-sm font-semibold shadow-lg">
-                    Most Popular
-                  </span>
-                </div>
-              )}
-              <CardHeader className={`text-center pb-4 ${plan.featured ? 'pt-12' : 'pt-8'}`}>
+              <CardHeader className="text-center pb-4 pt-8">
                 <CardTitle className="text-xl mb-2">{plan.name}</CardTitle>
                 <div className="mb-2">
                   <span className="text-4xl font-bold text-foreground ev-anim-data-tick">{plan.price}</span>
