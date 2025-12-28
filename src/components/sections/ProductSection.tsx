@@ -62,7 +62,7 @@ const ProductSection = () => {
               className="futuristic-card text-center animate-hologram"
             >
               <CardContent className="pt-8 pb-8">
-                <div className="w-14 h-14 mx-auto mb-4 flex items-center justify-center bg-gradient-to-br from-accent/20 to-accent/5 rounded-xl border border-accent/20 animate-float-slow">
+                <div className="w-14 h-14 mx-auto mb-4 flex items-center justify-center bg-gradient-to-br from-accent/20 to-accent/5 rounded-xl border border-accent/20">
                   <feature.icon className="w-7 h-7 text-accent animate-glow" />
                 </div>
                 <CardTitle className="text-lg font-semibold text-foreground mb-3">
